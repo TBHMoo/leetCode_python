@@ -1,0 +1,46 @@
+944. Delete Columns to Make Sorted
+https://leetcode.com/problems/delete-columns-to-make-sorted/
+
+题目大意，给一个 n*M （100*1000） 的数组，纯小写字母，求非增序的 列数。 
+
+
+class Solution:
+    def minDeletionSize(self, A):
+        """
+        :type A: List[str]
+        :rtype: int
+        """
+        # A = ["cba","daf","ghi"]
+        # print("A=",A)
+        # print("*A=",*A)
+        # print("zip(*A)=",zip(*A))
+        
+#         for col in zip(*A):
+#             print(col)
+        
+#         print("========================")
+        ans = 0;
+        for col in zip(*A):
+            # print(list(col))
+            # print(sorted(col))
+            if( list(col) != sorted(col)):
+                ans +=1
+                # print(i)
+        return ans
+        
+tips:
+  A 是整个数据对象
+  *A 是数组中的值
+  zip() 函数，可以组合不同数组的，相同列。返回元组 （元组内容不可修改）
+   
+>>>a = [1,2,3]
+>>> b = [4,5,6]
+>>> c = [4,5,6,7,8]
+>>> zipped = zip(a,b)     # 打包为元组的列表
+[(1, 4), (2, 5), (3, 6)]
+>>> zip(a,c)              # 元素个数与最短的列表一致
+[(1, 4), (2, 5), (3, 6)]
+>>> zip(*zipped)          # 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式
+[(1, 2, 3), (4, 5, 6)]
+
+ 可以用zip 轻松实现行转列，列转行
