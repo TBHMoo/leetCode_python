@@ -1,0 +1,59 @@
+965. Univalued Binary Tree
+https://leetcode.com/problems/univalued-binary-tree/
+
+题目大意：
+  判断一个二叉树，是否单值二叉树。 二叉树的每个节点的值都相同，就是单值二叉树
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isUnivalTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if root == None:
+            return true
+        
+        leftCorrect = (root.left == None or root.val == root.left.val and self.isUnivalTree(root.left))
+        rightCorrect = (root.right == None or root.val == root.right.val and self.isUnivalTree(root.right))
+        return leftCorrect and rightCorrect;
+        
+tips:
+  主要就是遍历二叉树。
+  我用的是递归，很久没写了，边界条件，忘了一次。 
+  递归思路就是，左边没问题，右边没问题  那么就是单值二叉树。 注意叶子节点也是属于没有问题的情况。
+  
+  
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isUnivalTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        vSet = set()
+        def dfs(node):
+            if node:
+                vSet.add(node.val)
+                dfs(node.left)
+                dfs(node.right)
+        
+        dfs(root)
+        # print(len(vSet))
+        return len(vSet) == 1
+     
+ tips:
+    dfs  记录下二叉树的值，看是否唯一
+        
