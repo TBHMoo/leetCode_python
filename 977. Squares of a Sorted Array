@@ -1,0 +1,19 @@
+977. Squares of a Sorted Array
+https://leetcode.com/problems/squares-of-a-sorted-array/
+
+题目大意，给你一个2N大小的数据A，里面有N+1个唯一的数字，其中有一个数字出现了N次。 找出这个数
+
+class Solution:
+    def repeatedNTimes(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        count = collections.Counter(A)
+        for k in count:
+            if count[k] > 1:
+                return k;
+                
+tips:
+   python 自己就实现了 hashMap 版本的数组统计
+                
