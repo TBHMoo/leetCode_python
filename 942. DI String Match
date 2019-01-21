@@ -1,0 +1,51 @@
+942. DI String Match
+https://leetcode.com/problems/di-string-match/
+
+题目大意：
+  输入：给一个长度为N的只包含'I'或者'D'的字符串S，
+  输出：要求返回包含一个长度为 N+1 的数字数A，数字只能在[0,N]中，并且满足，
+    if S[i]=='I', A[i]<A[i+1]
+    if A[i]=='D', A[i]>A[i-1]
+  的任意数组。
+  
+  
+  例如
+Example 1:
+Input: "IDID"
+Output: [0,4,1,3,2]
+
+Example 2:
+Input: "III"
+Output: [0,1,2,3]
+
+Example 3:
+Input: "DDI"
+Output: [3,2,0,1]
+
+
+
+class Solution:
+    def diStringMatch(self, S):
+        """
+        :type S: str
+        :rtype: List[int]
+        """
+        increase,decrease = 0,len(S)
+        # print(increase,decrease)
+        ans = []
+        for s in S:
+            if s=='I':
+                ans.append(increase)
+                increase+=1
+            if s=='D':
+                ans.append(decrease)
+                decrease-=1
+        ans.append(increase)
+        # print(ans)
+        return ans
+        
+tips:
+    题目可以看成两个有序数组的组合，一个增序，一个降序。
+        
+Output: [0,1,2,3]有
+Output: [0,1,2,3]
