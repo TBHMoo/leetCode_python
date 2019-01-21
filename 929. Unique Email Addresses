@@ -1,0 +1,30 @@
+929. Unique Email Addresses
+
+https://leetcode.com/problems/unique-email-addresses/
+
+
+class Solution:
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        # emails = ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
+        rlt = set()
+        for email in emails:
+            prefix, postfix = email.split('@')
+            # print(email)
+            # print(prefix,postfix)
+            prefix= prefix[:prefix.index('+')]
+            # print(prefix)
+            prefix = prefix.replace('.','')
+            rlt.add(prefix+'@'+postfix)
+        
+        # print(rlt)
+        return len(rlt)
+
+tips:
+  list in
+  字符串拆分  str.split('@')
+  字符串前缀截取  str[:str.index('+')]
+  字符串替换函数有返回值 str.replace(',','')
