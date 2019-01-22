@@ -1,0 +1,21 @@
+852. Peak Index in a Mountain Array
+https://leetcode.com/problems/peak-index-in-a-mountain-array/
+题目大意，山型数组，的顶峰位置
+A.length >= 3
+There exists some 0 < i < A.length - 1 such that A[0] < A[1] < ... A[i-1] < A[i] > A[i+1] > ... > A[A.length - 1]
+
+class Solution:
+    def peakIndexInMountainArray(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        # alen = len(A)
+        ans = 0
+        for i in range(len(A)):
+            if A[ans] < A[i]:
+                ans = i
+        return ans
+        
+tips:
+  range() 函数，生成一个数组
