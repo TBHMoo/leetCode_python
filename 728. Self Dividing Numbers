@@ -1,0 +1,29 @@
+728. Self Dividing Numbers
+https://leetcode.com/problems/self-dividing-numbers/
+
+题目大意：一个不含0的正整数，分别模每一位结果都为0 叫做 Self Dividing Numbers
+输入，一个区间[left,right]
+输出，在这个区间内属于，sefl dividing number的正整数的 数组
+
+class Solution:
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        def isSelfDividingNumber(n):
+            for i in str(n):
+                if( i == '0' or n % int(i) > 0):
+                    return False
+            return True
+        
+        ans =[]
+        for i in range(left,right+1):
+            if(isSelfDividingNumber(i)):
+                ans.append(i)
+        return ans
+        
+tips:
+    str()   int()之间的强转    
+        
