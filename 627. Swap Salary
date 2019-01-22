@@ -1,0 +1,12 @@
+627. Swap Salary
+https://leetcode.com/problems/swap-salary/
+题目大意，将一张表中的性别属性，修改，男改成女，女改成男
+
+# Write your MySQL query statement below
+update salary 
+set sex =
+    case 
+        when sex = 'm' then 'f'
+        when sex = 'f' then 'm'
+    end
+    
