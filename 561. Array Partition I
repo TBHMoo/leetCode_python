@@ -1,0 +1,21 @@
+561. Array Partition I
+https://leetcode.com/problems/array-partition-i/
+
+题目大意：给2n个 正整数，两个一组，分成n 组， 求 sum(min(a0,b0)+min(a1,b1).....min(an,bn)) 的最小值
+
+class Solution:
+    def arrayPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums = sorted(nums)
+        nlen = len(nums)
+        ans = 0
+        for i in range(nlen):
+            if (i+1) % 2 > 0:
+                ans += nums[i]
+        return ans
+
+tips:
+     两个一组取最小值，那么两个数差值最小，最后得到的和最大。 所以排序取奇数位就可以了
