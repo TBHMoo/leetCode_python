@@ -1,0 +1,27 @@
+500. Keyboard Row
+https://leetcode.com/problems/keyboard-row/
+
+题目大意：
+  找出一行键盘能够打出的单词，忽略大小写
+
+class Solution:
+    def findWords(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """
+        ans =[]
+        keyboard = ["qwertyuiop","asdfghjkl","zxcvbnm"]
+        
+        for temp in keyboard:
+            for word in words:
+                flag = True
+                for c in word.lower():
+                    if c not in temp:
+                        flag = False
+                if flag:
+                    ans.append(word)
+        return ans
+            
+tips: 
+    python 大小写转换找我半天， 善用全局搜索
