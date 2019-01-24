@@ -1,0 +1,25 @@
+766. Toeplitz Matrix
+https://leetcode.com/problems/toeplitz-matrix/
+
+题目大意：
+    判断一个矩阵是否托布里兹矩阵，托布里兹矩阵，除了第一行第一列，其他每个元素都与 当前元素的左上角相等。
+   
+   
+class Solution:
+    def isToeplitzMatrix(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: bool
+        """
+        group = {}
+        for r,row in enumerate(matrix):
+            for c, val in enumerate(row):
+                if r-c not in group:
+                    group[r-c] = val
+                elif group[r-c] != val:
+                    return False
+            return True
+            
+tips:
+     斜线分组，组内元素都相等。 就是托布里兹矩阵。 
+     还有一种方式，就是非首行首列元素，就判断是否等于左上元素。 
