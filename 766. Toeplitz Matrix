@@ -11,14 +11,18 @@ class Solution:
         :type matrix: List[List[int]]
         :rtype: bool
         """
+        # matrix = [[1,2],[2,2]]
         group = {}
         for r,row in enumerate(matrix):
+            # print(row)
             for c, val in enumerate(row):
+                # print(r-c, val)
                 if r-c not in group:
                     group[r-c] = val
+                    # print(group)
                 elif group[r-c] != val:
                     return False
-            return True
+        return True
             
 tips:
      斜线分组，组内元素都相等。 就是托布里兹矩阵。 
