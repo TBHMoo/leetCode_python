@@ -1,0 +1,38 @@
+893. Groups of Special-Equivalent Strings
+https://leetcode.com/problems/groups-of-special-equivalent-strings/
+
+题目大意：
+    分组特殊相等字符串 如果一个字符串 S，通过特殊交换本字符串字母顺序，等于 T。那么就说 S==T 。
+    特殊交换的定义是，当 i%2 == j%2 时，S[i] 可以与 S[交换]。交换次数不限制。
+    给一个字符串数组A
+    
+1 <= A.length <= 1000
+1 <= A[i].length <= 20
+All A[i] have the same length.
+All A[i] consist of only lowercase letters.
+    
+输入： 一个字符串数组A
+输出： 分组数
+
+
+
+class Solution:
+    def numSpecialEquivGroups(self, A):
+        """
+        :type A: List[str]
+        :rtype: int
+        """
+        # A = ["abcd","cdab","adcb","cbad"]
+        setA = set()
+        # setA.add("333")
+        for s in A:
+            # print("".join(sorted(s[0::2])) + "".join(sorted(s[1::2])))
+            setA.add("".join(sorted(s[0::2])) + "".join(sorted(s[1::2])))
+            # setA.add("".join(sorted(s[0::2]) + "".join(sorted(s[1::2])))
+        # print(help(set))
+        return len(setA)
+        
+tips:
+    特殊交换后相等  我理解为  先预处理，把一个字符串拆分成两个字符串，奇数位字符串，和偶数位字符串，并进行排序。再组合起来，之后再对比。如果相等，就满足
+    特殊交换后相等
+    
