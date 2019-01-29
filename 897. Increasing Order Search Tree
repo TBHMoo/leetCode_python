@@ -1,0 +1,41 @@
+897. Increasing Order Search Tree
+https://leetcode.com/problems/increasing-order-search-tree/
+
+题目大意：
+    增序二叉搜索树
+    给你一个二叉树，重排列这个树，使二叉树最左节点成为根节点，并且这个二叉树只有右节点。
+    
+    
+    # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def increasingBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        ans = []
+        def leftMidRight(node):
+            if node:
+                leftMidRight(node.left)
+                node.val
+                ans.append(node.val)
+                leftMidRight(node.right)
+        leftMidRight(root)
+        
+        incBST= cur = TreeNode(0)
+        for i in ans:
+            cur.right = TreeNode(i)
+            cur = cur.right
+            
+        return incBST.right
+        
+        
+ tips:
+     左序遍历原来二叉树，记录下遍历顺序。
+     重构一个只有右节点的二叉树。
