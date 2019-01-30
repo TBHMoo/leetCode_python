@@ -1,0 +1,44 @@
+872. Leaf-Similar Trees
+https://leetcode.com/problems/leaf-similar-trees/
+
+题目大意：
+     对比两个二叉树的叶子节点顺序
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def leafSimilar(self, root1, root2):
+        """
+        :type root1: TreeNode
+        :type root2: TreeNode
+        :rtype: bool
+        """
+        tree1 ,tree2 = [], []
+        def leftMidRight(node,tree):
+            if node:
+                leftMidRight(node.left,tree)
+                node.val
+                leftMidRight(node.right,tree)
+                if node.left == None and node.right == None:
+                    tree.append(node.val)
+        
+        leftMidRight(root1,tree1)
+        leftMidRight(root2,tree2)
+        # print(tree1)
+        # print(tree2)
+        # print(tree1==tree2)
+        return tree1==tree2
+                
+        
+        
+tips:
+    遍历二叉树，提取叶子节点。 叶子节点即 左右指针为None 的节点。
+    这些题目好简单，是不是做了有意义？ 练习 python 语法是不是有更有效率，更有意思的方法，我为什么要学python 只是觉得这个语言，语法很节约时间而已
+    
+    
+        
