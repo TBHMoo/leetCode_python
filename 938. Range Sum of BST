@@ -1,0 +1,33 @@
+938. Range Sum of BST
+https://leetcode.com/problems/range-sum-of-bst/
+
+题目大意:
+  求一个二叉搜索树上，值在[L，R]内的节点之和
+  
+  # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def rangeSumBST(self, root, L, R):
+        """
+        :type root: TreeNode
+        :type L: int
+        :type R: int
+        :rtype: int
+        """
+        self.ans = 0
+        def leftMidRight(node):
+            if node:
+                leftMidRight(node.left)
+                node.val
+                leftMidRight(node.right)
+                if node.val >= L and node.val <= R:
+                    self.ans = self.ans + node.val
+                    
+        leftMidRight(root)
+        return self.ans
+        
