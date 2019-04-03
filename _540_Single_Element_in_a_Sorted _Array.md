@@ -1,4 +1,4 @@
-
+[540. Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/)
 ### 题目大意
 Given a sorted array consisting of only integers where every element appears twice except for one element which appears once. Find this single element that appears only once.
 
@@ -58,6 +58,55 @@ class Solution {
         return result;
     }
 }
+~~~
+
+大致思路
+题目要求不能遍历，数组也是有序，说明可以二分
+这题的关键就在于二分之后判断取哪边。
+* 目标一侧一定是奇数个元素
+* AAB，和ABB 计算两侧元素个数
+
+~~~py
+class Solution(object):
+    def singleNonDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        
+        l, mid ,r = 0,0,len(nums)-1
+        result = 0
+        while l < r :
+            mid = (l + r) / 2
+            leftval = nums[mid] ^ nums[mid - 1]
+            rightval = nums[mid] ^ nums[mid + 1]
+            if l == r - 2 :
+                if leftval == 0 and rightval != 0 :
+                    result = nums[r]
+                elif leftval != 0 and rightval == 0 :
+                    result = nums[l]
+                break
+                
+            if leftval == 0 and rightval != 0 :
+                leftCount = mid -1
+                rightCount = r-mid
+                if leftCount %2 ==0 :
+                     l = mid + 1 
+                if rightCount %2 == 0 :
+                     r = mid - 2
+                    
+            elif leftval != 0 and rightval == 0 :
+                leftCount = mid
+                rightCount = r- (mid+1) 
+                if leftCount %2 ==0 :
+                     l = mid + 2  
+        
+                if rightCount %2 == 0 :
+                     r = mid - 1
+            elif leftval != 0 and rightval != 0 :
+                result = nums[mid]
+                break
+        return result   
 ~~~
 
 算法没问题，回头改成python实现
